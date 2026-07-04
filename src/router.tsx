@@ -1,7 +1,7 @@
-import { PiggyBank } from 'lucide-react'
+
 import { createBrowserRouter } from 'react-router-dom'
 
-import { Button } from './components/shared/button'
+
 
 export const router = createBrowserRouter([
   {
@@ -12,9 +12,7 @@ export const router = createBrowserRouter([
   <div>
     <h1>Formulário de Simulação</h1>
 
-    <Button variant="primary" icon={PiggyBank}>
-      Clique aqui
-    </Button>
+   
   </div>
 ),
       },
