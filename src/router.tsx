@@ -3,7 +3,7 @@ import { createBrowserRouter } from "react-router-dom";
 import { RootLayout } from "./components/layout/RootLayout";
 
 import { SimulationResultsPage } from "./pages/SimulationResultsPage";
-import SimulationFormPage from "./pages/SimulationFormPage";
+import { SimulationFormPage } from "./pages/SimulationFormPage";
 
 export const router = createBrowserRouter([
   {

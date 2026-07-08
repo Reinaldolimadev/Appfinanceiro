@@ -1,9 +1,12 @@
+import { SimulationHero } from "../components/features/Hero";
 
 
-export default function SimulationFormPage() {
+
+export function SimulationFormPage() {
   return (
-    <div>
-      <h1>Hello</h1>
-    </div>
+    <main className="mx-auto max-w-xl px-4 py-10 sm:py-14">
+      <SimulationHero/>
+      
+    </main>
   )
 }
