@@ -1,5 +1,5 @@
 
-import money from "../../assets/images/money.png.png";
+import money from "../../assets/images/ganho.png";
 
 export function SimulationHero() {
   return (
