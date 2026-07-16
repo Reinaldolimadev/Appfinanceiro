@@ -1,4 +1,3 @@
-
 import money from "../../assets/images/ganho.png";
 
 export function SimulationHero() {
@@ -19,6 +18,5 @@ export function SimulationHero() {
         Responda algumas questões para ter insights financeiros personalizados.
       </p>
     </div>
-  )
+  );
 }
-

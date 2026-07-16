@@ -52,19 +52,16 @@ export const useInsight = (id: string) => {
           ...simulation,
           insight: data,
         } as SimulationRecord);
-
       } catch (err) {
         console.error("Erro ao chamar Gemini:", err);
         setError("Erro ao gerar o diagnóstico. Tente novamente.");
-
       } finally {
         isRequestPending.current = false;
         setIsLoading(false);
       }
     },
-    [getFormData, updateSimulation]
+    [getFormData, updateSimulation],
   );
-
 
   useEffect(() => {
     console.log("useEffect executou", {
@@ -81,9 +78,7 @@ export const useInsight = (id: string) => {
 
     console.log("Chamando fetchInsight...");
     fetchInsight(id);
-
   }, [id, insight, isLoading, error, fetchInsight]);
-
 
   return {
     insight,

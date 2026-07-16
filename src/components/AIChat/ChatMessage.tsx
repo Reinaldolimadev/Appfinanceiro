@@ -1,12 +1,9 @@
 interface ChatMessage {
+  id: string;
 
- id:string
+  role: "user" | "assistant";
 
- role:
- "user" | "assistant"
+  content: string;
 
- content:string
-
- createdAt:string
-
+  createdAt: string;
 }

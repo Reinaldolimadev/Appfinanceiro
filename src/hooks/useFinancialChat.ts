@@ -1,55 +1,39 @@
-import { useState } from 'react'
+import { useState } from "react";
 
-import {
-  type ChatMessage,
-} from '../components/data/Simulation'
+import { type ChatMessage } from "../components/data/Simulation";
 
-import { useSimulationStorage } from './useSimulationStorage'
+import { useSimulationStorage } from "./useSimulationStorage";
 
-import { askFinancialAI } from '../components/services/chatSrvices'
-
+import { askFinancialAI } from "../components/services/chatSrvices";
 
 export function useFinancialChat(simulationId: string) {
+  const { getFormData, updateSimulation } = useSimulationStorage();
 
-  const {
-    getFormData,
-    updateSimulation,
-  } = useSimulationStorage()
-
-
-  const simulation = getFormData(simulationId)
-
+  const simulation = getFormData(simulationId);
 
   const [messages, setMessages] = useState<ChatMessage[]>(
     simulation?.chat ?? [],
-  )
+  );
 
+  const [isLoading, setIsLoading] = useState(false);
 
-  const [isLoading, setIsLoading] = useState(false)
-
-  const [error, setError] = useState<string | null>(null)
-
+  const [error, setError] = useState<string | null>(null);
 
   async function sendMessage(question: string) {
-
     if (!simulation) {
-      setError('Simulação não encontrada.')
-      return
+      setError("Simulação não encontrada.");
+      return;
     }
 
-
-    setIsLoading(true)
-    setError(null)
-
+    setIsLoading(true);
+    setError(null);
 
     try {
-
       const userMessage: ChatMessage = {
-        role: 'user',
+        role: "user",
         content: question,
         createdAt: new Date().toISOString(),
-      }
-
+      };
 
       const prompt = `
 Você é um educador financeiro.
@@ -79,58 +63,37 @@ Pergunta do usuário:
 ${question}
 
 Responda de forma clara e prática.
-`
+`;
 
-
-      const answer = await askFinancialAI(prompt)
-
+      const answer = await askFinancialAI(prompt);
 
       const assistantMessage: ChatMessage = {
-        role: 'assistant',
+        role: "assistant",
         content: answer,
         createdAt: new Date().toISOString(),
-      }
+      };
 
+      const updatedMessages = [...messages, userMessage, assistantMessage];
 
-      const updatedMessages = [
-        ...messages,
-        userMessage,
-        assistantMessage,
-      ]
+      setMessages(updatedMessages);
 
-
-      setMessages(updatedMessages)
-
-
-      updateSimulation(
-        simulationId,
-        {
-          ...simulation,
-          chat: updatedMessages,
-        },
-      )
-
-
+      updateSimulation(simulationId, {
+        ...simulation,
+        chat: updatedMessages,
+      });
     } catch (error) {
+      console.error(error);
 
-      console.error(error)
-
-      setError(
-        'Erro ao conversar com o educador financeiro.',
-      )
-
+      setError("Erro ao conversar com o educador financeiro.");
     } finally {
-
-      setIsLoading(false)
-
+      setIsLoading(false);
     }
   }
-
 
   return {
     messages,
     sendMessage,
     isLoading,
     error,
-  }
+  };
 }

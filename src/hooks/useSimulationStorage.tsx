@@ -1,101 +1,80 @@
 import {
   type SimulationFormData,
   type SimulationRecord,
-} from '../components/data/Simulation'
+} from "../components/data/Simulation";
 
-const LOCAL_STORAGE_KEY = 'simulation-data'
+const LOCAL_STORAGE_KEY = "simulation-data";
 
 export const useSimulationStorage = () => {
-
   const saveFormData = (formData: SimulationFormData) => {
-    const id = crypto.randomUUID()
+    const id = crypto.randomUUID();
 
     const record: SimulationRecord = {
       ...formData,
       id,
-    }
+    };
 
-    const storage = localStorage.getItem(LOCAL_STORAGE_KEY)
+    const storage = localStorage.getItem(LOCAL_STORAGE_KEY);
 
     const savedData = storage
       ? (JSON.parse(storage) as SimulationRecord[])
-      : []
+      : [];
 
     localStorage.setItem(
       LOCAL_STORAGE_KEY,
       JSON.stringify([...savedData, record]),
-    )
+    );
 
-    return id
-  }
-
+    return id;
+  };
 
   const getFormData = (id: string) => {
-    const storage = localStorage.getItem(LOCAL_STORAGE_KEY)
+    const storage = localStorage.getItem(LOCAL_STORAGE_KEY);
 
     if (!storage) {
-      return null
+      return null;
     }
 
-    const savedData = JSON.parse(storage) as SimulationRecord[]
+    const savedData = JSON.parse(storage) as SimulationRecord[];
 
-    return savedData.find(
-      (record) => record.id === id,
-    ) || null
-  }
-
+    return savedData.find((record) => record.id === id) || null;
+  };
 
   const getAllSimulations = (): SimulationRecord[] => {
-    const storage = localStorage.getItem(LOCAL_STORAGE_KEY)
+    const storage = localStorage.getItem(LOCAL_STORAGE_KEY);
 
     if (!storage) {
-      return []
+      return [];
     }
 
-    return JSON.parse(storage) as SimulationRecord[]
-  }
-
+    return JSON.parse(storage) as SimulationRecord[];
+  };
 
   const deleteSimulation = (id: string) => {
-    const storage = localStorage.getItem(LOCAL_STORAGE_KEY)
+    const storage = localStorage.getItem(LOCAL_STORAGE_KEY);
 
     const savedData = storage
       ? (JSON.parse(storage) as SimulationRecord[])
-      : []
+      : [];
 
-    const updated = savedData.filter(
-      (record) => record.id !== id,
-    )
+    const updated = savedData.filter((record) => record.id !== id);
 
-    localStorage.setItem(
-      LOCAL_STORAGE_KEY,
-      JSON.stringify(updated),
-    )
-  }
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updated));
+  };
 
-
-  const updateSimulation = (
-    id: string,
-    data: SimulationRecord,
-  ) => {
-    const storage = localStorage.getItem(LOCAL_STORAGE_KEY)
+  const updateSimulation = (id: string, data: SimulationRecord) => {
+    const storage = localStorage.getItem(LOCAL_STORAGE_KEY);
 
     const savedData = storage
       ? (JSON.parse(storage) as SimulationRecord[])
-      : []
+      : [];
 
     const updated = savedData.map((record) =>
-      record.id === id
-        ? { ...data, id }
-        : record,
-    )
+      record.id === id ? { ...data, id } : record,
+    );
 
-    localStorage.setItem(
-      LOCAL_STORAGE_KEY,
-      JSON.stringify(updated),
-    )
-  }
-
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(updated));
+  };
 
   return {
     saveFormData,
@@ -103,5 +82,5 @@ export const useSimulationStorage = () => {
     getAllSimulations,
     deleteSimulation,
     updateSimulation,
-  }
-}
+  };
+};

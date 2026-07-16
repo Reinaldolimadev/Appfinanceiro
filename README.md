@@ -6,10 +6,9 @@ O objetivo do projeto é auxiliar usuários no planejamento financeiro por meio 
 
 ---
 
-
 🚀 Funcionalidades
 
- 📋 Simulação Financeira
+📋 Simulação Financeira
 
 - Cadastro de renda mensal
 - Cadastro de gastos fixos
@@ -20,7 +19,7 @@ O objetivo do projeto é auxiliar usuários no planejamento financeiro por meio 
 
 ---
 
- 🤖 Diagnóstico com Inteligência Artificial
+🤖 Diagnóstico com Inteligência Artificial
 
 Após preencher a simulação, a aplicação utiliza IA para gerar:
 
@@ -33,7 +32,7 @@ Após preencher a simulação, a aplicação utiliza IA para gerar:
 
 ---
 
- 💬 Chat com IA
+💬 Chat com IA
 
 O usuário pode conversar com o Educador Financeiro sobre sua própria simulação.
 
@@ -49,7 +48,7 @@ Funcionalidades:
 
 ---
 
- 📚 Histórico de Simulações
+📚 Histórico de Simulações
 
 - Visualizar todas as simulações
 - Ver detalhes de uma simulação
@@ -58,7 +57,7 @@ Funcionalidades:
 
 ---
 
- 🛠 Tecnologias
+🛠 Tecnologias
 
 - React
 - TypeScript
@@ -70,7 +69,8 @@ Funcionalidades:
 - Groq API (Llama 3)
 
 ---
- 📂 Estrutura do Projeto
+
+📂 Estrutura do Projeto
 
 ```
 src
@@ -95,18 +95,16 @@ src
 
 ---
 
+📸 Telas
 
-
- 📸 Telas
-
- Página Inicial
+Página Inicial
 
 - Formulário em etapas
 - Simulação financeira
 
 ---
 
- Resultado
+Resultado
 
 - Dashboard financeiro
 - Cards com indicadores
@@ -154,14 +152,16 @@ Durante o desenvolvimento foram praticados:
 
 ---
 
- 👨‍💻 Desenvolvedor
+👨‍💻 Desenvolvedor
 
 **Reinaldo Machado Lima**
 
 LinkedIn:
+
 > https://www.linkedin.com/in/reinaldolimadev
 
 GitHub:
+
 > https://github.com/Reinaldolimadev
 
 ---
