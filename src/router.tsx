@@ -4,6 +4,7 @@ import { RootLayout } from "./components/layout/RootLayout";
 
 import { SimulationResultsPage } from "./pages/SimulationResultsPage";
 import { SimulationFormPage } from "./pages/SimulationFormPage";
+import { SimulationHistoryPage } from "./pages/SimulationHistoryPage";
 
 export const router = createBrowserRouter([
   {
@@ -19,7 +20,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/historico",
-        element: <SimulationResultsPage/>,
+        element: <SimulationHistoryPage />,
       },
     ],
   },
