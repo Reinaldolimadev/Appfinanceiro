@@ -13,3 +13,5 @@ createRoot(document.getElementById('root')!).render(
     </ThemeProvider>
   </StrictMode>,
 )
+console.log(import.meta.env)
+console.log("API:", import.meta.env.VITE_GEMINI_API_KEY)

@@ -37,6 +37,18 @@ export function AIInsightsCard({ simulationId }: AIInsightCardProps) {
           />
         </div>
       )}
+            {isLoading && (
+        <div className="flex">
+          <Skeleton
+            count={10.5}
+            baseColor="var(--color-skeleton-base)"
+            highlightColor="var(--color-skeleton-highlight)"
+            className="mb-3 flex rounded-lg"
+            containerClassName="flex-1"
+            inline
+          />
+        </div>
+            )}
 
       {!isLoading && error && (
         <Error
